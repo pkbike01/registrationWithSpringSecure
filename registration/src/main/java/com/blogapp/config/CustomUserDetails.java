@@ -9,9 +9,11 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.blogapp.entity.User;
-
+/**
+ * UserDetails is an interface*/
 public class CustomUserDetails implements UserDetails{
 	
+	//perform Autowire
 	private User user;
 	
 	public CustomUserDetails(User user) {
@@ -22,7 +24,9 @@ public class CustomUserDetails implements UserDetails{
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		//this is my code
+		//By the help of SimpleGrantedAuthority class we Grant the "Normal User"
 		SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority(user.getRole());
+		//new SimpleGrantedAuthority(user.getRole(){this is the authority of the user.})
 		
 		List<SimpleGrantedAuthority> list = Arrays.asList(simpleGrantedAuthority);
 		

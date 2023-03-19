@@ -13,17 +13,13 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @Configuration
 @EnableWebSecurity
 public class UserSecurityConfig extends WebSecurityConfigurerAdapter {
-	
-	
-	
-	
+
 	@Bean
 	public UserDetailsService getUserDetailService() {
 		return new UserDetailService_Impl();
 	}
 	
-	
-	
+
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
@@ -50,8 +46,10 @@ public class UserSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/users/**").hasRole("NORMAL")
-		.antMatchers("/admin/**").hasRole("ADMIN").antMatchers("/**").permitAll()
+		http.authorizeRequests()
+		.antMatchers("/users/**").hasRole("NORMAL")
+		.antMatchers("/admin/**").hasRole("ADMIN")
+		.antMatchers("/**").permitAll()
 		.and().formLogin().loginPage("/signin").and().csrf().disable()
 		;
 	}

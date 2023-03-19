@@ -28,7 +28,7 @@ public class UserController {
 		
 	}
 	@RequestMapping("/register")
-	public String saveUser(@ModelAttribute("user") User user,ModelMap model ) {
+	public String saveUser( @ModelAttribute("user") User user,ModelMap model ) {
 		user.setRole("ROLE_NORMAL");
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
 		

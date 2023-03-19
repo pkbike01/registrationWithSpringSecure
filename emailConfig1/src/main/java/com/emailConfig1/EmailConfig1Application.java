@@ -1,0 +1,13 @@
+package com.emailConfig1;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class EmailConfig1Application {
+
+	public static void main(String[] args) {
+		SpringApplication.run(EmailConfig1Application.class, args);
+	}
+
+}
